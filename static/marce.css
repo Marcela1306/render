@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-link:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.inicio {
+    padding: 20px;
+}
+
+.head h1 {
+    text-align: center;
+}
+
+.commentbox {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.commentbox img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.content {
+    flex: 1;
+}
+
+.commentinput input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #444;
+}
+
+.notify {
+    margin-left: 20px;
+}
+
+.policy {
+    color: #888;
+}
+
+.comments .comment {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comments .comment img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.comments .comment h1 {
+    margin: 0 0 10px;
+}
+
+.comments .comment .engagements {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.comments .comment .engagements img,
+.comments .comment .engagements button {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.comments .comment .engagements button {
+    background: none;
+    border: none;
+    color: #f00;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.comments .comment .date {
+    color: #888;
+    font-size: 12px;
+    margin-top: 10px;
+    display: block;
+}
+
+.collapse navbar-collapse{
+    margin: 30%;
+}

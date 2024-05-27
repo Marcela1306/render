@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Gallery
+{% endblock %}
+
+{% block main %}
+<!--menu-->
+<!--termina el menu-->
+
+<!--Filtros-->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    #filterToggleBtn {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #filterOptions {
+        margin-top: 1rem;
+        display: none;
+        flex-direction: column;
+    }
+
+    .filter-item {
+        margin-bottom: 1rem;
+    }
+</style>
+
+<div class="container mb-4">
+    <button id="filterToggleBtn" class="btn btn-secondary mb-3">=</button>
+    <div id="filterOptions" class="d-flex">
+        <div class="filter-item">
+            <select id="filterSize" class="form-select">
+                <option value="">Size</option>
+                <option value="pequeño">Small</option>
+                <option value="mediano">Medium</option>
+                <option value="grande">Big</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <select id="filterGender" class="form-select">
+                <option value="">Gender</option>
+                <option value="macho">Male</option>
+                <option value="hembra">Female</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <button type="button" class="btn btn-primary" onclick="applyFilters()">Apply filters</button>
+        </div>
+    </div>
+</div>
+
+<!--seccion de fotos-->
+<br>
+<br>
+<div class="row" id="gallery">
+  {% for post in datos %}
+    <div class="col-md-4 gallery-item" data-size="{{ post.size }}" data-gender="{{ post.gender }}">
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="fst-italic">{{ post.nombre_mascota }}</h5>
+              <p class="fst-italic">{{ post.descripcion_mascota }}</p>
+              <p class="fst-italic"><b>Contact:</b> {{ post.contacto }}</p>
+              <p class="fst-italic"><b>Size:</b> {{ post.size }}</p>
+              <p class="fst-italic"><b>Gender:</b> {{ post.gender }}</p>
+            </div>
+            <img src="data:image/png;base64,{{ post.archivo }}" class="rounded-slanted-oval" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; transform: rotate(30deg);" alt="...">
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <div class="box">
+              <a href="#divOne-{{ loop.index }}" class="button">Adopt</a>
+              <a href="#divTwo-{{ loop.index }}" class="button">Sponsor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Formulario para adoptar-->
+    <div class="overlay" id="divOne-{{ loop.index }}">
+      <div class="wrapper">
+          <h4>Fill the Formulary</h4>
+          <a href="#" class="close">&times;</a>
+          <div class="content">
+              <div class="container">
+                  <form method="POST" action="/adopta">
+                      <input type="hidden" name="hidden_id" value="{{ post.id }}">
+                      <label>Name and Surname</label>
+                      <input type="text" name="firstName" class="form-control" placeholder="Full Name" required>
+                      <label>Pet's Name</label>
+                      <input type="text" name="mascota" class="form-control" value="{{ post.nombre_mascota }}" readonly required>
+                      <label>Telephone</label>
+                      <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                      <label>Email</label>
+                      <input type="email" name="email" class="form-control" placeholder="Email" required>
+                      <label>Why do you want to adopt?</label>
+                      <textarea name="message" class="form-control" placeholder="Tell us why you want to adopt" required></textarea>
+                      <input type="checkbox" name="accept-conditions" class="form-check-input" required>
+                      <label>Accept the terms and conditions</label>
+                      <input type="submit" class="btn btn-primary" value="Send">
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!--Fin del formulario para adoptar-->
+
+    <!--Ventana para apadrinar-->
+    <div class="overlay" id="divTwo-{{ loop.index }}">
+      <div class="wrapper">
+          <h4>More Information</h4>
+          <a href="#" class="close">&times;</a>
+          <div class="content">
+              <div class="container">
+                <h5>If you want to sponsor you can contact the following number:</h5>
+                <a href="https://wa.me/{{ post.contact }}">{{ post.contact }}</a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!--Fin de la ventana para apadrinar-->
+    {% if loop.index % 3 == 0 and not loop.last %}
+      </div><div class="row">
+    {% endif %}
+  {% endfor %}
+</div>
+
+<script>
+    document.getElementById('filterToggleBtn').addEventListener('click', function() {
+      const filterOptions = document.getElementById('filterOptions');
+      if (filterOptions.style.display === 'none' || !filterOptions.style.display) {
+        filterOptions.style.display = 'flex';
+      } else {
+        filterOptions.style.display = 'none';
+      }
+    });
+
+    function applyFilters() {
+      const sizeFilter = document.getElementById('filterSize').value;
+      const genderFilter = document.getElementById('filterGender').value;
+      const items = document.querySelectorAll('.gallery-item');
+
+      items.forEach(item => {
+        const itemSize = item.getAttribute('data-size');
+        const itemGender = item.getAttribute('data-gender');
+
+        let sizeMatch = !sizeFilter || itemSize === sizeFilter;
+        let genderMatch = !genderFilter || itemGender === genderFilter;
+
+        if (sizeMatch && genderMatch) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!--termina la seccion-->
+{% endblock %}

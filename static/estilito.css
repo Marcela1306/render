@@ -1,0 +1,401 @@
+body {
+    background-color: #797979;
+    color: #333; /* Color de texto principal */
+}
+
+.head {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+  
+.navbar {
+    background-color: #78c5b6; /* Color de fondo verde suave para la barra de navegación */
+}
+
+#informacion, #imagenessubidas {
+    background-color: #f7e9d9; /* Color de fondo crema suave para secciones importantes */
+}
+
+#botones {
+    color: #8f6277;
+    border-color: #8f6277;
+}
+
+#botones:hover, #botonadoptar {
+    background-color: #f2c9c0;
+}
+
+#login {
+    background-color: #8f6277;
+    border-color: #8f6277;
+}
+
+#login:hover {
+    background-color: #f2c9c0;
+}
+
+#footer{
+    height: 160px;
+    width: 100%;
+}
+#information,
+#uploaded-images {
+    background-color: #f7e9d9;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 50px 0;
+}
+
+#why {
+    background-color: #ffd1b4;
+}
+
+
+button {
+    width: 100px;
+    margin-top:20px;
+}
+
+#fotoadop{
+    height: 240px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .d-flex {
+    flex-direction: row;
+}
+
+#letra{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#bperfil{
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border-radius: 5px;
+    
+}
+
+.box
+{
+    text-align: right;
+}
+
+.button{
+    font-size: 1em;
+    padding: 5px 20px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    background: #403e3d;
+    border-radius: 20px;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+}
+
+.overlay:target{
+    visibility: visible;
+    opacity: 6;
+}
+
+.wrapper{
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 40%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.wrapper h2{
+    margin-top: 0;
+    color: #333;
+}
+
+.wrapper .close{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 100ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.wrapper .content{
+    max-height: 30%;
+    overflow: auto;
+}
+
+/*form desing*/
+.container{
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    padding: 1px 0;
+}
+
+form label{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: small;
+    letter-spacing: 3px;
+}
+
+input[type=text], textarea{
+    width: 100%;
+    padding: 40;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    resize: vertical;
+}
+
+input[type=tel]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+input[type=email]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type="submit"]{
+    background-color: #413b3b;
+    color: #b3b3b3;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+/*fin del estilo del formulario*/
+
+/*estilo seccion comentario*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.text {
+    margin: 10px 0;
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+
+.inicio {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #c7c3c3;
+    /* background: #353935; */
+}
+
+.yo {
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+    font-family: monospace;
+    width: 600px;
+    box-shadow: 0 0 5px #000;
+}
+
+buttons-section {
+    font-size: 1em;
+    padding: 5px 20px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    background: #7c7b7a;
+    border-radius: 10px;
+}
+
+#cuidado-btn, #cuidadoch-btn, #cuidadola-btn, #testimonio-btn,
+#cuidadohu-btn,#veterinaria-btn{
+    font-size: 1em;
+    padding: 7px 15px;
+    color: #fff;
+    text-decoration: solid;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    background: #403e3d;
+    border-radius: 50px;
+}
+
+.commentbox {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.commentbox > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* float: left; */
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content {
+    width: 100%;
+}
+
+.user {
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    color: #808080;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.commentinput > input {
+    border: none;
+    padding: 10px;
+    padding-left: 0;
+    outline: none;
+    border-bottom: 2px solid blue;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #808080;
+}
+
+.buttons > button {
+    padding: 5px 10px;
+    background: lightgrey;
+    color: #808080;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.buttons > button.abled {
+    background: blue;
+    color: #fff;
+}
+
+.policy {
+    margin: 20px 0;
+    font-size: 0.8em;
+    font-family: Arial, sans-serif;
+    color: #808080;
+}
+
+.policy a {
+    text-decoration: none;
+    color: blue;
+}
+
+.notify {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.notify > input {
+    margin-right: 5px;
+    border: 2px solid #808080;
+}
+
+.parents {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.parents h1 {
+    font-size: 1.2em;
+    color: #000;
+}
+
+.parents p {
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+.parents > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.engagements {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.engagements img {
+    width: 20px;
+
+}
+
+.engagements img:nth-child(1) {
+    margin-right: 10px;
+    width: 25px;
+}
+
+.date {
+    color: #808080;
+    font-size: 0.8em;
+}
+
+

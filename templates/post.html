@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block main %}
+<style>
+    .container {
+        margin-top: 50px;
+        text-align: center;
+    }
+    img {
+        max-width: 170px;
+        height: auto;
+        margin: 0 auto; /* Para centrar la imagen horizontalmente */
+    }
+    .texto {
+        margin-top: 20px;
+    }
+</style>
+
+<br> <br>
+<!--imagen de arriba-->
+    <img src="https://svgsilh.com/svg_v2/1721865.svg" alt="Imagen Transparente">
+        <h2 style="color: white">Add a photo</h2>
+<!--final de la imagen-->
+<div class="p-3 mb-2">
+</div>
+<form action="/galeria" method="post" enctype="multipart/form-data" subject="Formulario de adopción de perritos" message="Datos del adoptante" class="d-flex flex-column align-items-center">
+
+  <div class="fst-italic mb-3">
+      <label style="color: white" for="mascota" class="form-label">Pet name or temporary name</label>
+      <input autocomplete="off" autofocus class="fst-italic form-control" id="mascota" name="mascota" placeholder="Pet's name" type="text" required>
+  </div>
+  <div class="fst-italic mb-3">
+      <label style="color: white" for="descripcion" class="form-label">Description</label>
+      <input autocomplete="off" autofocus class="fst-italic form-control" id="descripcion" name="descripcion" placeholder="Description of the animal" type="text" required>
+  </div>
+  <div class="fst-italic mb-3">
+      <label style="color: white" for="contact" class="form-label">Contact number</label>
+      <input autocomplete="off" autofocus class="fst-italic form-control" id="contact" name="contact" placeholder="Contact number" type="tel" required>
+  </div>
+  <div class="fst-italic mb-3">
+      <label style="color: white" for="tamano" class="form-label">Size</label>
+      <select id="tamano" name="size" class="fst-italic form-control">
+          <option value="pequeño">Small</option>
+          <option value="mediano">Medium</option>
+          <option value="grande">Big</option>
+      </select>
+  </div>
+  <div class="fst-italic mb-3">
+      <label style="color: white" for="sexo" class="form-label">Gender</label>
+      <select id="sexo" name="gender" class="fst-italic form-control">
+          <option value="macho">Male</option>
+          <option value="hembra">Female</option>
+      </select>
+  </div>
+  <div class="fst-italic mb-3">
+      <label style="color: white" for="archivo" class="form-label">Pet photo</label>
+      <input class="form-control" type="file" id="archivo" name="archivo" required>
+  </div>
+  <p><br></p>
+  <input type="submit" class="btn btn-primary" value="Send">
+</form>
+
+{% endblock %}

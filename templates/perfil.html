@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Perfil
+{% endblock %}
+
+{% block main %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+  body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+  
+  .profile-image {
+    border-radius: 50%;
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  .profile-info {
+    margin-top: 20px;
+  }
+  
+  .profile-info h4 {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .profile-info p {
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .edit-profile-btn {
+    margin-top: 20px;
+  }
+  
+  .btn-group {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .btn-group a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+</style>
+
+<div class="profile-container">
+  <div class="text-center">
+    <img src="static/img/user.png" alt="Perfil de Usuario" class="profile-image">
+  </div>
+  <div class="profile-info">
+    <h4>Perfil de Usuario</h4>
+    <p><strong>Usuario:</strong> <span id="usuario">{{ user.usuario }}</span></p>
+    <p><strong>Email:</strong> <span id="email">{{ user.correo }}</span></p>
+    <div class="text-center">
+      <button class="btn btn-primary edit-profile-btn" data-bs-toggle="modal" data-bs-target="#editarPerfilModal">Editar perfil</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editarPerfilModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="perfilForm" action="#" method="post">
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" name="usuario" class="form-control" id="usuarioInput" value="">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="emailInput" value="">
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" name="date" class="form-control" id="dateInput" value="">
+          </div>
+          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" onclick="guardarCambios()">Guardar Cambios</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btn-group">
+  <a href="/post" class="btn btn-primary">Post a Dog</a>
+  <a href="/galeria" class="btn btn-primary">Adoptar</a>
+</div>
+
+<script>
+  function editarPerfil() {
+    var usuario = document.getElementById('usuario').textContent.trim();
+    var email = document.getElementById('email').textContent.trim();
+
+    document.getElementById('usuarioInput').value = usuario;
+    document.getElementById('emailInput').value = email;
+
+    var editarPerfilModal = new bootstrap.Modal(document.getElementById('editarPerfilModal'));
+    editarPerfilModal.show();
+  }
+
+  function guardarCambios() {
+    var nuevoUsuario = document.getElementById('usuarioInput').value.trim();
+    var nuevaEmail = document.getElementById('emailInput').value.trim();
+    var nuevadate = document.getElementById('dateInput').value.trim();
+
+    document.getElementById('usuario').textContent = nuevoUsuario;
+    document.getElementById('email').textContent = nuevaEmail;
+
+    var editarPerfilModal = new bootstrap.Modal(document.getElementById('editarPerfilModal'));
+    editarPerfilModal.hide();
+
+    document.getElementById('usuarioInput').value = '';
+    document.getElementById('emailInput').value = '';
+    document.getElementById('dateInput').value = '';
+  }
+</script>
+
+{% endblock %}

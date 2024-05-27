@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<br><br><br>
+
+<img src="static/img/user.png">
+
+<form action="/sing" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Usuario" type="text">
+    </div>
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="email" name="correo" placeholder="Correo electrónico" type="email">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Contraseña" type="password">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" id="password_confirmation" name="password_confirmation" placeholder="Confirmar contraseña" type="password">
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
+</form>
+
+<div class="p-3 mb-1">
+    <h5 class="fst-italic"><br><br><br></h5>
+</div>
+{% endblock %}
+
+<!--Para registrarse-->

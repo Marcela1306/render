@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<!--Aqui incia  -->
+<br>
+<div id="carouselExampleFade" class="carousel slide carousel-fade position-relative">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="static/img/carrusel.png" class="d-block w-100" alt="...">
+            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                <!-- Fondo con forma personalizada -->
+                <div class="position-relative" style="background-color: rgba(128, 128, 128, 0.5); padding: 10px; clip-path: polygon(0 25px, 100% 25px, 100% 100%, 0 100%);">
+                    <h1 style="color: white;">Adopt now!<br></h1>
+                    <h3 style="color: white;">Dogs are waiting for you!</h3>
+                    <form action="/galeria" method="GET">
+                        <div class="d-grid gap-2 col-3 mx-auto align-items-center">
+                            <button class="btn btn-primary" type="submit" style="background-color: #EBEBEB; color: black; border: #EBEBEB">Adopt here</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Semicírculo hacia fuera -->
+                <div class="position-absolute w-100" style="top: -28px; left: 0; right: 0; overflow: hidden;">
+                    <div style="background-color: rgba(128, 128, 128, 0.5); height: 53px; border-radius: 50% 50% 0 0;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Aqui finaliza el carrusel-->
+<!--boton de adoptar-->
+<br>
+
+
+<!--termina boton de adoptar-->
+
+
+<br><br>
+<section id="reasons" class="container py-5">
+    <h2 class="mb-4">Reasons to Adopt a Pet</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <h3 class="text-primary">Save a life</h3>
+            <p style="text-align: justify;margin-left:30px;margin-right:30px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h3 class="text-primary">Companionship</h3>
+            <p style="text-align: justify;margin-left:30px;margin-right:30px;">By adopting, you’re helping make space for another animal in need and helping to give them the opportunity to become beloved pets.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h3 class="text-primary">Stopping Illegal Trafficking</h3>
+            <p style="text-align: justify; margin-left:30px;margin-right:30px;">By adopting from your local shelter or rescue, you are giving back to your community instead of helping cruel breeders profit.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Start -->
+
+
+<div class="container-fluid bg-light my-5 p-0 py-5">
+  <div class="container p-0 py-5">
+      <div class="d-flex flex-column text-center mb-5">
+          <h4 class="text-secondary mb-3">Comments</h4>
+          <h1 class="display-4 m-0">Woof <span class="text-primary">Home</span></h1>
+      </div>
+      <div class="owl-carousel testimonial-carousel">
+          <div class="bg-white mx-3 p-4">
+              <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                  <img class="img-fluid" src="static/img/Roger.jpeg" style="width: 80px; height: 80px;" alt="">
+                  <div class="ml-3">
+                      <h5>Roger Zuckerbergh</h5>
+                      <i>Software Developer</i>
+                  </div>
+              </div>
+              <p class="m-0">Your website is a ray of sunshine! It's incredibly easy to navigate and filled with bundles of joy waiting to find their forever homes. Absolutely love it!</p>
+          </div>
+          <div class="bg-white mx-3 p-4">
+              <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                  <img class="img-fluid" src="static/img/Fernanda.jpeg" style="width: 80px; height: 80px;" alt="">
+                  <div class="ml-3">
+                      <h5>Fernanda Musk</h5>
+                      <i>Marcela's wife</i>
+                  </div>
+              </div>
+              <p class="m-0">What a delightful website! From the moment I landed on the homepage, I couldn't stop smiling. The pictures of the puppies are just too cute to handle!</p>
+          </div>
+          <div class="bg-white mx-3 p-4">
+              <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                  <img class="img-fluid" src="static/img/testimonio3.jpeg" style="width: 80px; height: 80px;" alt="">
+                  <div class="ml-3">
+                      <h5>Rosa </h5>
+                      <i>Teacher</i>
+                  </div>
+              </div>
+              <p class="m-0">I can't help but feel uplifted every time I visit your website. It's beautifully designed and radiates warmth and compassion. Keep up the fantastic work!</p>
+          </div>
+          <div class="bg-white mx-3 p-4">
+              <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                  <img class="img-fluid" src="static/img/testimonio4.jpeg" style="width: 80px; height: 80px;" alt="">
+                  <div class="ml-3">
+                      <h5>Adrian</h5>
+                      <i>Model</i>
+                  </div>
+              </div>
+              <p class="m-0">This website is a gem! The love and care poured into each page are evident. It's a testament to the incredible work you're doing for these adorable puppies. Thank you for spreading so much joy!</p>
+          </div>
+      </div>
+      <br>
+      <div class="mb-3 d-flex justify-content-center">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width: 800px;"></textarea>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg">Send</button>
+    
+  </div>
+</div>
+<!-- Testimonial End -->
+
+{% endblock %}
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
+
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

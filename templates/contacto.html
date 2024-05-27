@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contacto
+{% endblock %}
+
+{% block main %}
+
+
+
+{% endblock %}
+
+
+<!--No sabemos que hace esta plantilla-->
+
+application_blueprint = Blueprint('application', __name__)
+
+
+@application_blueprint.route('/')
+def index():
+    return render_template('index.html')

@@ -1,0 +1,187 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Veterinary Info
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/blog">Categories</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Generales">General Care</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Chihuahua">Chihuahua Care</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Labrador">Labrador Care</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Huskys">Husky's Care</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Testimonio">Testimony</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Veterinaria">Veterinary Info</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Post a Comment</h5>
+                </div>
+                <div class="card-body">
+                    <form id="commentForm">
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Enter your name here:</label>
+                            <input type="text" class="form-control" id="userName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userComment" class="form-label">Enter comment:</label>
+                            <input type="text" class="form-control" id="userComment" placeholder="Comparte Informacion" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="notify">
+                            <label class="checkbox" for="notify">Notify me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="publish">Publish</button>
+                    </form>
+                    <p class="mt-3">This is a puppy love site</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span id="commentCountVeterinaria">0</span> Comments
+    <div class="text">
+        <p>We are happy to hear from you</p>
+    </div>
+    <div class="comments-veterinaria">
+        <!-- Comentarios se insertarán aquí -->
+        {% for comment in comments_veterinaria %}
+        {% if not comment.deleted %}
+            <div class="comment" id="comment-{{ comment.id }}">
+                <img src="{{ comment.image }}" alt="">
+                <div>
+                    <h1>{{ comment.name }}</h1>
+                    <p>{{ comment.message }}</p>
+                    <div class="engagements">
+                        <img src="static/img/like.png" class="like-btn" data-comment-id="{{ comment.id }}">
+                        <img src="static/img/share.png" alt="">
+                        <button class="delete-btn" data-comment-id="{{ comment.id }}">Delete</button>
+                    </div>
+                    <span class="date">{{ comment.date }}</span>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userComment = document.getElementById("userComment");
+            const userName = document.getElementById("userName");
+            const publishBtn = document.getElementById("publish");
+            const commentsVeterinaria = document.querySelector(".comments-veterinaria");
+            const commentCountVeterinaria = document.getElementById("commentCountVeterinaria");
+        
+            // Verificar si hay comentarios de veterinaria en el almacenamiento local y mostrarlos
+            const storedCommentsVeterinaria = JSON.parse(localStorage.getItem('commentsVeterinaria')) || [];
+            const validCommentsVeterinaria = storedCommentsVeterinaria.filter(comment => !comment.deleted);
+            validCommentsVeterinaria.forEach(comment => {
+                addCommentToDOM(comment, commentsVeterinaria);
+            });
+            commentCountVeterinaria.textContent = validCommentsVeterinaria.length;
+        
+            // Event listener para el botón "Publicar"
+            publishBtn.addEventListener("click", addPost);
+        
+            function addPost() {
+                if (!userComment.value.trim() || !userName.value.trim()) return;
+        
+                const name = userName.value.trim();
+                const message = userComment.value.trim();
+        
+                // Validar malas palabras
+                const badWords = ["puta", "caca", "mierda", "demonio", "malparido", "zorra", "verga", "idiota", "puto", "maldito", "maldita", "hijueputa"];
+                const containsBadWord = badWords.some(word => message.toLowerCase().includes(word));
+                if (containsBadWord) {
+                    alert("Por favor, evita usar lenguaje inapropiado.");
+                    return;
+                }
+        
+                const comment = { id: Date.now(), name: name, message: message, date: new Date().toLocaleString(), deleted: false };
+                storedCommentsVeterinaria.push(comment);
+                localStorage.setItem('commentsVeterinaria', JSON.stringify(storedCommentsVeterinaria));
+        
+                addCommentToDOM(comment, commentsVeterinaria);
+        
+                commentCountVeterinaria.textContent = parseInt(commentCountVeterinaria.textContent) + 1;
+        
+                userComment.value = "";
+                userName.value = "";
+            }
+        
+            // Función para agregar un comentario al DOM
+            function addCommentToDOM(comment, commentsContainer) {
+                const commentHtml = `
+                    <div class="comment" id="comment-${comment.id}">
+                        <img src="static/img/user.png" alt="">
+                        <div>
+                            <h1>${comment.name}</h1>
+                            <p>${comment.message}</p>
+                            <div class="engagements">
+                                <img src="static/img/like.png" class="like-btn" data-comment-id="${comment.id}">
+                                <img src="static/img/share.png" alt="">
+                                <button class="delete-btn" data-comment-id="${comment.id}">Eliminar</button>
+                            </div>
+                            <span class="date">${comment.date}</span>
+                        </div>
+                    </div>
+                `;
+                commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
+            }
+        
+            // Event listener para los botones de eliminar
+            document.addEventListener("click", function(event) {
+                if (event.target.classList.contains("delete-btn")) {
+                    const commentId = event.target.dataset.commentId;
+                    deleteComment(commentId);
+                }
+            });
+        
+            // Función para eliminar un comentario
+            function deleteComment(commentId) {
+                const commentElement = document.getElementById(`comment-${commentId}`);
+                commentElement.remove();
+                commentCountVeterinaria.textContent = parseInt(commentCountVeterinaria.textContent) - 1;
+        
+                let storedCommentsVeterinaria = JSON.parse(localStorage.getItem('commentsVeterinaria')) || [];
+                storedCommentsVeterinaria = storedCommentsVeterinaria.map(comment => {
+                    if (comment.id === commentId) {
+                        return { ...comment, deleted: true };
+                    }
+                    return comment;
+                });
+                localStorage.setItem('commentsVeterinaria', JSON.stringify(storedCommentsVeterinaria));
+            }
+        });
+    </script>
+{% endblock %}
