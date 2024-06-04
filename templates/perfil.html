@@ -11,7 +11,7 @@
 
 <style>
   body {
-    background-color: #f8f9fa;
+    background-color: #005954;
     font-family: Arial, sans-serif;
   }
   
@@ -77,11 +77,11 @@
     <img src="static/img/user.png" alt="Perfil de Usuario" class="profile-image">
   </div>
   <div class="profile-info">
-    <h4>Perfil de Usuario</h4>
-    <p><strong>Usuario:</strong> <span id="usuario">{{ user.usuario }}</span></p>
+    <h4>User Profile</h4>
+    <p><strong>User:</strong> <span id="usuario">{{ user.usuario }}</span></p>
     <p><strong>Email:</strong> <span id="email">{{ user.correo }}</span></p>
     <div class="text-center">
-      <button class="btn btn-primary edit-profile-btn" data-bs-toggle="modal" data-bs-target="#editarPerfilModal">Editar perfil</button>
+      <button class="btn btn-primary edit-profile-btn" data-bs-toggle="modal" data-bs-target="#editarPerfilModal" style="background-color: #EBEBEB; color: black; border: #EBEBEB">Edit Profile</button>
     </div>
   </div>
 </div>
@@ -91,13 +91,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="perfilForm" action="#" method="post">
           <div class="mb-3">
-            <label for="usuario" class="form-label">Usuario</label>
+            <label for="usuario" class="form-label">User</label>
             <input type="text" name="usuario" class="form-control" id="usuarioInput" value="">
           </div>
           <div class="mb-3">
@@ -105,11 +105,11 @@
             <input type="email" name="email" class="form-control" id="emailInput" value="">
           </div>
           <div class="mb-3">
-            <label for="date" class="form-label">Fecha de Nacimiento</label>
+            <label for="date" class="form-label">Birthday</label>
             <input type="date" name="date" class="form-control" id="dateInput" value="">
           </div>
-          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" onclick="guardarCambios()">Guardar Cambios</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" onclick="guardarCambios()" style="background-color: #EBEBEB; color: black; border: #EBEBEB">Save Changes</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" style="background-color: #EBEBEB; color: black; border: #EBEBEB">Cancel</button>
         </form>
       </div>
     </div>
@@ -117,8 +117,8 @@
 </div>
 
 <div class="btn-group">
-  <a href="/post" class="btn btn-primary">Post a Dog</a>
-  <a href="/galeria" class="btn btn-primary">Adoptar</a>
+  <a href="/post" class="btn btn-primary" style="background-color: #EBEBEB; color: black; border: #EBEBEB">Post a Dog</a>
+  <a href="/galeria" class="btn btn-primary" style="background-color: #EBEBEB; color: black; border: #EBEBEB">Adopt</a>
 </div>
 
 <script>
