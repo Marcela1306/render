@@ -50,7 +50,7 @@
 <br>
 
 
-<!--filter-->
+
 <!--div class="container mb-4"-->
   <div id="filterOptions" class="d-flex flex-column" style="width: 300px;">
       <div class="filter-item">
@@ -73,9 +73,8 @@
       </div>
   </div>
 <!--/div>
-<!-aca finaliza el filter-->
 
-<!--Seccion de fotos-->
+<--Seccion de fotos-->
 <br>
 <br>
 <div class="row" id="gallery" >
@@ -109,7 +108,7 @@
           <a href="#" class="close">&times;</a>
           <div class="content">
               <div class="container">
-                  <form method="POST" action="/adopta">
+                  <!--form method="POST" action="/adopta">
                       <input type="hidden" name="hidden_id" value="{{ post.id }}">
                       <label>Name and Surname</label>
                       <input type="text" name="firstName" class="form-control" placeholder="Full Name" required>
@@ -124,6 +123,42 @@
                       <input type="checkbox" name="accept-conditions" class="form-check-input" required>
                       <label>Accept the terms and conditions</label>
                       <input type="submit" class="btn btn-primary" value="Send">
+                  </form-->
+                  <form action="/adopta" method="post">
+                    <input type="hidden" name="hidden_id" value="{{ post.id }}">
+                  
+                    <label for="firstName">Nombre:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                  
+                    <label for="lastName">Apellido:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                  
+                    <label for="mascota">Mascota:</label>
+                    <input type="text" id="mascota" name="mascota" value="{{ post.nombre_mascota }}" readonly>
+                  
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                  
+                    <label for="phone">Teléfono:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                  
+                    <label for="message">Comentario:</label>
+                    <textarea id="message" name="message" required></textarea>
+                  
+                    <label for="size">Tamaño:</label>
+                    <select id="size" name="size" required>
+                      <option value="Pequeño">Pequeño</option>
+                      <option value="Mediano">Mediano</option>
+                      <option value="Grande">Grande</option>
+                    </select>
+                  
+                    <label for="gender">Género:</label>
+                    <select id="gender" name="gender" required>
+                      <option value="Macho">Macho</option>
+                      <option value="Hembra">Hembra</option>
+                    </select>
+                  
+                    <button type="submit">Adoptar</button>
                   </form>
               </div>
           </div>

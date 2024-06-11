@@ -150,11 +150,11 @@ def adopta():
         comen = request.form.get("message")
         size = request.form.get("size")
         gender = request.form.get("gender")
+        db.execute("INSERT INTO adoptados(nombres, apellidos, mascota, email, telefono, comen, id_mascota) VALUES(?,?,?,?,?,?,?)",
+           nombres, apellidos, mascota, email, telefono, comen, id)
 
-        db.execute("INSERT INTO adoptados(nombres, apellidos, mascota, email, telefono, comen, id_mascota) VALUES(?, ?, ?, ?, ?, ?, ?)",
-                   nombres, apellidos, mascota, email, telefono, comen, id)
         db.execute("UPDATE mascota SET estado='Adoptado', size=?, gender=? WHERE id=?", size, gender, id)
-        return render_template("adopta.html")
+        return render_template("galeria.html")
 
 
 @app.route("/sing", methods=["GET", "POST"])
@@ -211,7 +211,7 @@ def galeria():
         archivo = request.files["archivo"]
 
         # Insertar en la base de datos
-        db.execute("INSERT INTO mascota(nombre_mascota, descripcion_mascota, contact, size, gender, usuario, archivo) VALUES(?, ?, ?, ?, ?, ?, ?)", mascota, descripcion, contact, size, gender, contact, archivo.read())
+        db.execute("INSERT INTO mascota(nombre_mascota, descripcion_mascota, contacto, size, gender, usuario, archivo) VALUES(?, ?, ?, ?, ?, ?, ?)", mascota, descripcion, contact, size, gender, contact, archivo.read())
 
         return redirect("/galeria")
 
@@ -228,4 +228,4 @@ def logout():
 
     # Redirect user to login form
     return redirect("/")
-  
+ 
