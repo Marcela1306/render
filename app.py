@@ -152,9 +152,12 @@ def adopta():
         gender = request.form.get("gender")
         db.execute("INSERT INTO adoptados(nombres, apellidos, mascota, email, telefono, comen, id_mascota) VALUES(?,?,?,?,?,?,?)",
            nombres, apellidos, mascota, email, telefono, comen, id)
-
+        print(f"el id de la mascota es: {id}")
         db.execute("UPDATE mascota SET estado='Adoptado', size=?, gender=? WHERE id=?", size, gender, id)
-        return render_template("galeria.html")
+        datos = db.execute("SELECT * FROM mascota WHERE estado='en adopcion'")
+        for dato in datos:
+            dato["archivo"] = base64.b64encode(dato["archivo"]).decode("utf-8")
+        return render_template("galeria.html", datos=datos)
 
 
 @app.route("/sing", methods=["GET", "POST"])

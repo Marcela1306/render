@@ -108,10 +108,11 @@
           <a href="#" class="close">&times;</a>
           <div class="content">
               <div class="container">
-                  <!--form method="POST" action="/adopta">
+                  <!--form action="/adopta" method="post">
                       <input type="hidden" name="hidden_id" value="{{ post.id }}">
-                      <label>Name and Surname</label>
-                      <input type="text" name="firstName" class="form-control" placeholder="Full Name" required>
+
+                      <label for="firstName">Name</label>
+                      <input type="text" id="firstName" class="form-control" placeholder="Full Name" required>
                       <label>Pet's Name</label>
                       <input type="text" name="mascota" class="form-control" value="{{ post.nombre_mascota }}" readonly required>
                       <label>Telephone</label>
