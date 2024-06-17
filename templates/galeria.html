@@ -136,21 +136,21 @@
     <!--Fin del formulario para adoptar-->
 
     <!--Ventana para apadrinar-->
-    <div class="overlay" id="divTwo-{{ loop.index }}">
-      <div class="wrapper">
-          <h4>More Information</h4>
-          <a onclick="closeSponsorModal('{{ loop.index }}')" class="close">&times;</a>
-          <div class="content">
-              <div class="container">
-                <h5>If you want to sponsor you can contact the following number:</h5>
-                <a href="https://wa.me/{{ post.contact }}">{{ post.contact }}</a>
-              </div>
-          </div>
+<div class="overlay" id="divTwo-{{ loop.index }}">
+  <div class="wrapper">
+    <h4>More Information</h4>
+    <a onclick="closeSponsorModal('{{ loop.index }}')" class="close">×</a>
+    <div class="content">
+      <div class="container">
+        <h5>If you want to sponsor, you can contact the following number:</h5>
+        <p class="fst-italic"><b>Contact:</b> {{ post.contacto }}</p>
+        <a href="https://wa.me/{{ post.contact }}">**{{ post.contact }}Escribele</a>
       </div>
     </div>
+  </div>
+</div>
 <!--Fin de la ventana para apadrinar-->
 
-    <!--Fin de la ventana para apadrinar-->
     {% if loop.index % 3 == 0 and not loop.last %}
       </div><div class="row">
     {% endif %}
